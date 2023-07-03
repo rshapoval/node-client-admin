@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const engine = require('ejs-mate')
 require('dotenv').config();
 const createPath = require('./helpers/create-path');
 
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3000;
 const errorMessage = chalk.bgKeyword('white').redBright;
 const successMessage = chalk.bgKeyword('green').white;
 
+app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
 app.listen(PORT, error => {
@@ -20,7 +22,7 @@ app.listen(PORT, error => {
 
 app.get('/', (req, res) => {
   res
-    .render(createPath('client', 'index'));
+    .render(createPath('client', 'page'));
 });
 
 app.use(morgan(`${process.env.LOG_LEVEL || 'tiny'}`));
