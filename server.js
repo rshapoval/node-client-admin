@@ -19,7 +19,8 @@ app.listen(PORT, error => {
 });
 
 app.get('/', (req, res) => {
-  res.render(createPath('index'));
+  res
+    .render(createPath('client', 'index'));
 });
 
 app.use(morgan(`${process.env.LOG_LEVEL || 'tiny'}`));
@@ -29,5 +30,5 @@ app.use(methodOverride('_method'));
 app.use((req, res) => {
   res
     .status(404)
-    .render(createPath('404'));
+    .render(createPath('client', '404'));
 });

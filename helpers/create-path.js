@@ -1,5 +1,5 @@
 const path = require('path');
 
-const createPath = (page) => path.resolve(__dirname, '../views', `${page}.ejs`);
+const createPath = (dir = '', view) => path.resolve(__dirname, `../views/${dir}`, `${view}.ejs`);
 
 module.exports = createPath;
