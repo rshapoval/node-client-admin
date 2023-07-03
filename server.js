@@ -19,7 +19,7 @@ app.listen(PORT, error => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello, world');
+  res.render(createPath('index'));
 });
 
 app.use(morgan(`${process.env.LOG_LEVEL || 'tiny'}`));
@@ -29,5 +29,5 @@ app.use(methodOverride('_method'));
 app.use((req, res) => {
   res
     .status(404)
-    .send('404');
+    .render(createPath('404'));
 });
