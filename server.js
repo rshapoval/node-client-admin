@@ -30,9 +30,14 @@ app.get('/blog', (req, res) => {
     .render(createPath('client', 'blog'));
 });
 
-app.get('/blog/post', (req, res) => {
+app.get('/blog/:id', (req, res) => {
   res
     .render(createPath('client', 'blog-post'));
+});
+
+app.get('/dashboard', (req, res) => {
+  res
+    .render(createPath('admin', 'dashboard'));
 });
 
 app.use(morgan(`${process.env.LOG_LEVEL || 'tiny'}`));

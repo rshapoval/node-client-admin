@@ -1,0 +1,77 @@
+<% layout('admin/layouts/main') -%>
+<from>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="title" placeholder="Title">
+    <label for="title">Title</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="description" placeholder="Description">
+    <label for="description">Description</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="logo" placeholder="Logo">
+    <label for="logo">Logo</label>
+  </div>
+  <h4 class="mt-4">Menu</h4>
+  <div class="row mb-3">
+    <div class="col-10">
+      <div class="row">
+        <div class="col">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="link-text-1" placeholder="link-text">
+            <label for="link-text-1">Link text</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="link-url-1" placeholder="link-url">
+            <label for="link-url-1">Link url</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <button type="button" class="btn btn-outline-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-10">
+      <div class="row">
+        <div class="col">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="link-text-1" placeholder="link-text">
+            <label for="link-text-1">Link text</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="link-url-1" placeholder="link-url">
+            <label for="link-url-1">Link url</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <button type="button" class="btn btn-outline-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <button type="button" class="btn btn-outline-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
+        Add new link
+      </button>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success btn-lg w-100 mt-3">Submit</button>
+</from>
