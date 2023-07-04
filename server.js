@@ -25,6 +25,16 @@ app.get('/', (req, res) => {
     .render(createPath('client', 'page'));
 });
 
+app.get('/blog', (req, res) => {
+  res
+    .render(createPath('client', 'blog'));
+});
+
+app.get('/blog/post', (req, res) => {
+  res
+    .render(createPath('client', 'blog-post'));
+});
+
 app.use(morgan(`${process.env.LOG_LEVEL || 'tiny'}`));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
