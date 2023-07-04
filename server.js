@@ -40,6 +40,18 @@ app.get('/dashboard', (req, res) => {
     .render(createPath('admin', 'dashboard'));
 });
 
+app.get('/dashboard/pages', (req, res) => {
+  const title = 'Pages';
+  res
+    .render(createPath('admin', 'pages'), { title });
+});
+
+app.get('/dashboard/blog', (req, res) => {
+  const title = 'Blog';
+  res
+    .render(createPath('admin', 'pages'), { title });
+});
+
 app.use(morgan(`${process.env.LOG_LEVEL || 'tiny'}`));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
