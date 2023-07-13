@@ -16,8 +16,13 @@ const successMessage = chalk.bgKeyword('green').white;
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
-app.listen(PORT, error => {
-  error ? console.log(errorMessage(error)) : console.log(successMessage(`Listening on ${PORT}`));
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then((res) => console.log(successMessage('Connected to DB')))
+  .catch((error) => console.log(errorMessage(error)));
+
+app.listen(process.env.PORT, (error) => {
+  error ? console.log(errorMessage(error)) : console.log(successMessage(`listening port ${process.env.PORT}`));
 });
 
 app.get('/', (req, res) => {
