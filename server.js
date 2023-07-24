@@ -7,7 +7,8 @@ const engine = require('ejs-mate')
 require('dotenv').config();
 const createPath = require('./helpers/create-path');
 const homeRoutes = require('./routes/client/home-routes');
-const postRoutes = require('./routes/client/post-routes');
+const postClientRoutes = require('./routes/client/post-routes');
+const postAdminRoutes = require('./routes/admin/post-routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -59,12 +60,6 @@ app.get('/dashboard/pages/:id/edit', (req, res) => {
     .render(createPath('admin', 'page'), { title, isPage });
 });
 
-app.get('/dashboard/blog', (req, res) => {
-  const title = 'Blog';
-  res
-    .render(createPath('admin', 'pages'), { title });
-});
-
 app.get('/dashboard/blog/create', (req, res) => {
   const title = 'Create article';
   const isPage = false;
@@ -85,7 +80,8 @@ app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
 app.use(homeRoutes);
-app.use(postRoutes);
+app.use(postClientRoutes);
+app.use(postAdminRoutes);
 app.use((req, res) => {
   res
     .status(404)

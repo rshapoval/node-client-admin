@@ -1,7 +1,7 @@
 <% layout('client/layouts/main') -%>
 <h1 class="display-1 mb-5 fw-medium text-center"><%= title %></h1>
 <div class="row text-center">
-  <% if (posts && posts.length) { %>
+  <% if (typeof posts !== 'undefined' && posts.length) { %>
     <% posts.forEach(({ id, h1, img }) => { %>
       <div class="col-lg-4">
         <a class="d-block mb-5 rounded-3" href="/blog/<%= id %>">
