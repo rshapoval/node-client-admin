@@ -6,9 +6,13 @@ const methodOverride = require('method-override');
 const engine = require('ejs-mate')
 require('dotenv').config();
 const createPath = require('./helpers/create-path');
+const homeRoutes = require('./routes/client/home-routes');
+const postRoutes = require('./routes/client/post-routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const MONGO_URL = process.env.MONGO_URL || '';
+const LOG_LEVEL = process.env.LOG_LEVEL || 'tiny';
 
 const errorMessage = chalk.bgKeyword('white').redBright;
 const successMessage = chalk.bgKeyword('green').white;
@@ -17,22 +21,12 @@ app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(MONGO_URL)
   .then((res) => console.log(successMessage('Connected to DB')))
   .catch((error) => console.log(errorMessage(error)));
 
-app.listen(process.env.PORT, (error) => {
-  error ? console.log(errorMessage(error)) : console.log(successMessage(`listening port ${process.env.PORT}`));
-});
-
-app.get('/', (req, res) => {
-  res
-    .render(createPath('client', 'page'));
-});
-
-app.get('/blog', (req, res) => {
-  res
-    .render(createPath('client', 'blog'));
+app.listen(PORT, (error) => {
+  error ? console.log(errorMessage(error)) : console.log(successMessage(`listening port ${PORT}`));
 });
 
 app.get('/blog/:id', (req, res) => {
@@ -85,10 +79,13 @@ app.get('/dashboard/blog/:id/edit', (req, res) => {
     .render(createPath('admin', 'page'), { title, isPage });
 });
 
-app.use(morgan(`${process.env.LOG_LEVEL || 'tiny'}`));
+app.use(morgan(`${LOG_LEVEL}`));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
+
+app.use(homeRoutes);
+app.use(postRoutes);
 app.use((req, res) => {
   res
     .status(404)

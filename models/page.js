@@ -21,7 +21,7 @@ const pageSchema = new Schema({
   content: {
     type: String,
     required: true
-  },
+  }
 });
 
 const Page = mongoose.model('Page', pageSchema);
