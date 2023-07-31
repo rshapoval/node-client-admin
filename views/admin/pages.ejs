@@ -10,11 +10,18 @@
 </div>
 <% if (typeof pages !== 'undefined' && pages.length) { %>
 <ul class="list-group">
-  <% pages.forEach(({ id, h1 }) => { %>
+  <% pages.forEach(({ id, h1, slug }) => { %>
     <li class="list-group-item d-flex justify-content-between align-items-center">
       <div>
         <div><span class="fw-bolder">Title:</span> <%= h1 %></div>
-        <div><span class="fw-bolder">Slug:</span> <a href="<%= slug ? `/${slug}` : '' %>/<%= id %>"><%= slug ? `/${slug}` : '' %>/<%= id %></a></div>
+        <div>
+          <span class="fw-bolder">Slug:</span>
+          <% if (pageType === 'page') { %>
+            <a href="<%= slug ? slug : '/' %>"><%= slug ? slug : '/' %></a>
+          <% } else { %>
+            <a href="<%= typeSlug ? `/${typeSlug}` : '' %>/<%= id %>"><%= typeSlug ? `/${typeSlug}` : '' %>/<%= id %></a>
+          <% } %>
+        </div>
       </div>
       <div>
         <a href="/dashboard/<%= pageType %>/<%= id %>/edit" class="btn btn-outline-warning">

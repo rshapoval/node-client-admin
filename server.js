@@ -9,6 +9,7 @@ const createPath = require('./helpers/create-path');
 const homeRoutes = require('./routes/client/home-routes');
 const postClientRoutes = require('./routes/client/post-routes');
 const postAdminRoutes = require('./routes/admin/post-routes');
+const pageAdminRoutes = require('./routes/admin/page-routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -38,12 +39,6 @@ app.get('/blog/:id', (req, res) => {
 app.get('/dashboard', (req, res) => {
   res
     .render(createPath('admin', 'dashboard'));
-});
-
-app.get('/dashboard/pages', (req, res) => {
-  const title = 'Pages';
-  res
-    .render(createPath('admin', 'pages'), { title });
 });
 
 app.get('/dashboard/pages/create', (req, res) => {
@@ -82,6 +77,7 @@ app.use(methodOverride('_method'));
 app.use(homeRoutes);
 app.use(postClientRoutes);
 app.use(postAdminRoutes);
+app.use(pageAdminRoutes);
 app.use((req, res) => {
   res
     .status(404)
