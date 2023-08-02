@@ -8,6 +8,7 @@ require('dotenv').config();
 const createPath = require('./helpers/create-path');
 const homeRoutes = require('./routes/client/home-routes');
 const postClientRoutes = require('./routes/client/post-routes');
+const commonAdminRoutes = require('./routes/admin/common-routes');
 const postAdminRoutes = require('./routes/admin/post-routes');
 const pageAdminRoutes = require('./routes/admin/page-routes');
 
@@ -34,11 +35,6 @@ app.listen(PORT, (error) => {
 app.get('/blog/:id', (req, res) => {
   res
     .render(createPath('client', 'blog-post'));
-});
-
-app.get('/dashboard', (req, res) => {
-  res
-    .render(createPath('admin', 'dashboard'));
 });
 
 app.get('/dashboard/pages/create', (req, res) => {
@@ -76,6 +72,7 @@ app.use(methodOverride('_method'));
 
 app.use(homeRoutes);
 app.use(postClientRoutes);
+app.use(commonAdminRoutes);
 app.use(postAdminRoutes);
 app.use(pageAdminRoutes);
 app.use((req, res) => {
