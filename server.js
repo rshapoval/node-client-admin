@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const engine = require('ejs-mate')
 require('dotenv').config();
 const createPath = require('./helpers/create-path');
+const sharedDataMiddleware = require('./middlewares/shared-data-middleware');
 const homeRoutes = require('./routes/client/home-routes');
 const postClientRoutes = require('./routes/client/post-routes');
 const commonAdminRoutes = require('./routes/admin/common-routes');
@@ -28,9 +29,11 @@ mongoose
   .then((res) => console.log(successMessage('Connected to DB')))
   .catch((error) => console.log(errorMessage(error)));
 
-app.listen(PORT, (error) => {
-  error ? console.log(errorMessage(error)) : console.log(successMessage(`listening port ${PORT}`));
-});
+app.use(sharedDataMiddleware);
+app.use(morgan(`${LOG_LEVEL}`));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 app.get('/blog/:id', (req, res) => {
   res
@@ -65,11 +68,6 @@ app.get('/dashboard/blog/:id/edit', (req, res) => {
     .render(createPath('admin', 'page'), { title, isPage });
 });
 
-app.use(morgan(`${LOG_LEVEL}`));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public'));
-app.use(methodOverride('_method'));
-
 app.use(homeRoutes);
 app.use(postClientRoutes);
 app.use(commonAdminRoutes);
@@ -79,4 +77,8 @@ app.use((req, res) => {
   res
     .status(404)
     .render(createPath('client', '404'));
+});
+
+app.listen(PORT, (error) => {
+  error ? console.log(errorMessage(error)) : console.log(successMessage(`listening port ${PORT}`));
 });

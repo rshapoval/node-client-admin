@@ -10,7 +10,7 @@ const getPages = (req, res) => {
       res.render(createPath('admin', 'pages'), {
         'title': 'Pages',
         'pages': pages,
-        'pageType': 'page',
+        'pageType': 'pages',
         'typeSlug': false
       })
     })

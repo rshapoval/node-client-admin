@@ -4,13 +4,13 @@
 </div>
 <from>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="logo" id="logo" placeholder="Logo" value="<%= logo %>">
+    <input type="text" class="form-control" id="logo" id="logo" placeholder="Logo" value="<%= sharedData.logo %>">
     <label for="logo">Logo</label>
   </div>
   <div class="js-menu-wrapper">
     <h4 class="mt-4">Menu</h4>
-    <% if (typeof nav !== 'undefined' && nav.length) { %>
-      <% nav.forEach(({ text, url }, index) => { %>
+    <% if (typeof sharedData.nav !== 'undefined' && sharedData.nav.length) { %>
+      <% sharedData.nav.forEach(({ text, url }, index) => { %>
         <div class="row mb-3 js-link" data-id="link-<%= index %>">
           <div class="col-10">
             <div class="row">
