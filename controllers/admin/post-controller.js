@@ -39,8 +39,23 @@ const getEditPost = (req, res) => {
     .catch(error => handleError(res, error));
 };
 
+const deletePost = (req, res) => {
+  Post
+    .findByIdAndDelete(req.params.id)
+    .then(result => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      res
+        .status(404)
+        .render(createPath('client', '404'));
+    })
+};
+
 module.exports = {
   getPosts,
   getAddPost,
-  getEditPost
+  getEditPost,
+  deletePost
 };

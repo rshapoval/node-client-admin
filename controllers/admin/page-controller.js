@@ -39,8 +39,23 @@ const getEditPage = (req, res) => {
     .catch(error => handleError(res, error));
 };
 
+const deletePage = (req, res) => {
+  Page
+    .findByIdAndDelete(req.params.id)
+    .then(result => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      res
+        .status(404)
+        .render(createPath('client', '404'));
+    })
+};
+
 module.exports = {
   getPages,
   getAddPage,
-  getEditPage
+  getEditPage,
+  deletePage
 };

@@ -68,3 +68,20 @@
     </div>`;
   }
 })();
+
+// Del page/article
+(function () {
+  document.addEventListener('click', (e) => {
+    const delButton = e.target.closest('.js-del-page');
+    if (!delButton) return null;
+    const id = delButton.dataset?.id || null;
+    const type = delButton.dataset?.type || null;
+    if (id && type) {
+      fetch(`/${type}/${id}`, {
+        method: 'DELETE',
+      }).then(() => {
+        window.location.reload();
+      });
+    }
+  });
+})();
