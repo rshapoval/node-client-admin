@@ -40,34 +40,6 @@ app.get('/blog/:id', (req, res) => {
     .render(createPath('client', 'blog-post'));
 });
 
-app.get('/dashboard/pages/create', (req, res) => {
-  const title = 'Create page';
-  const isPage = true;
-  res
-    .render(createPath('admin', 'page'), { title, isPage });
-});
-
-app.get('/dashboard/pages/:id/edit', (req, res) => {
-  const title = 'Edit page';
-  const isPage = true;
-  res
-    .render(createPath('admin', 'page'), { title, isPage });
-});
-
-app.get('/dashboard/blog/create', (req, res) => {
-  const title = 'Create article';
-  const isPage = false;
-  res
-    .render(createPath('admin', 'page'), { title, isPage });
-});
-
-app.get('/dashboard/blog/:id/edit', (req, res) => {
-  const title = 'Edit article';
-  const isPage = false;
-  res
-    .render(createPath('admin', 'page'), { title, isPage });
-});
-
 app.use(homeRoutes);
 app.use(postClientRoutes);
 app.use(commonAdminRoutes);

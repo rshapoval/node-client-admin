@@ -17,4 +17,30 @@ const getPosts = (req, res) => {
     .catch(error => handleError(res, error));
 };
 
-module.exports = getPosts;
+const getAddPost = (req, res) => {
+  res
+    .render(createPath('admin', 'page'), {
+      'title': 'Create article',
+      'isPage': false
+    });
+};
+
+const getEditPost = (req, res) => {
+  Post
+    .findById(req.params.id)
+    .then(post => {
+      res
+        .render(createPath('admin', 'page'), {
+          'title': 'Edit article',
+          'isPage': false,
+          'page': post
+        });
+    })
+    .catch(error => handleError(res, error));
+};
+
+module.exports = {
+  getPosts,
+  getAddPost,
+  getEditPost
+};
