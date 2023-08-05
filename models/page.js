@@ -22,7 +22,7 @@ const pageSchema = new Schema({
     type: String,
     required: true
   }
-});
+}, { timestamps: true });
 
 const Page = mongoose.model('Page', pageSchema);
 

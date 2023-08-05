@@ -2,30 +2,30 @@
 <div class="pt-3 pb-2 mb-4 border-bottom">
   <h1 class="h2"><%= title %></h1>
 </div>
-<from>
+<form method="post" action="/<%= isPage ? 'pages' : 'blog' %>/create">
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="title" placeholder="Title" value="<%= page ? page.title : '' %>">
+    <input name="title" type="text" class="form-control" id="title" placeholder="Title" value="<%= page ? page.title : '' %>">
     <label for="title">Title</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="description" placeholder="Description" value="<%= page ? page.description : '' %>">
+    <input name="description" type="text" class="form-control" id="description" placeholder="Description" value="<%= page ? page.description : '' %>">
     <label for="description">Description</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="h1" placeholder="h1" value="<%= page ? page.h1 : '' %>">
+    <input name="h1" type="text" class="form-control" id="h1" placeholder="h1" value="<%= page ? page.h1 : '' %>">
     <label for="h1">h1</label>
   </div>
   <% if (isPage) { %>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="image url" placeholder="Image url" value="<%= page ? page.slug : '' %>">
+      <input name="slug" type="text" class="form-control" id="image url" placeholder="Image url" value="<%= page ? page.slug : '' %>">
       <label for="image url">Slug</label>
     </div>
   <% } else { %>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="image url" placeholder="Image url" value="<%= page ? page.img : '' %>">
+      <input name="img" type="text" class="form-control" id="image url" placeholder="Image url" value="<%= page ? page.img : '' %>">
       <label for="image url">Image url</label>
     </div>
   <% } %>
-  <textarea id="editor"><%= page ? page.content : '' %></textarea>
+  <textarea name="content" id="editor"><%= page ? page.content : '' %></textarea>
   <button type="submit" class="btn btn-success w-100 mt-3">Submit</button>
-</from>
+</form>

@@ -26,6 +26,15 @@ const getAddPage = (req, res) => {
     });
 };
 
+const addPage = (req, res) => {
+  const { title, description, h1, slug, content } = req.body;
+  const page = new Page({ title, description, h1, slug, content });
+  page
+    .save()
+    .then(result => res.redirect('/dashboard/pages'))
+    .catch((error) => handleError(res, error));
+};
+
 const getEditPage = (req, res) => {
   Page
     .findById(req.params.id)
@@ -57,6 +66,7 @@ const deletePage = (req, res) => {
 module.exports = {
   getPages,
   getAddPage,
+  addPage,
   getEditPage,
   deletePage
 };
