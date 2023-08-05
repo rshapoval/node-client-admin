@@ -21,7 +21,8 @@ const getAddPage = (req, res) => {
   res
     .render(createPath('admin', 'page'), {
       'title': 'Create page',
-      'isPage': true
+      'isPage': true,
+      'page': null
     });
 };
 

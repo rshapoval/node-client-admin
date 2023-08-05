@@ -21,7 +21,8 @@ const getAddPost = (req, res) => {
   res
     .render(createPath('admin', 'page'), {
       'title': 'Create article',
-      'isPage': false
+      'isPage': false,
+      'page': null
     });
 };
 

@@ -4,28 +4,28 @@
 </div>
 <from>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="title" placeholder="Title" value="<%= page.title %>">
+    <input type="text" class="form-control" id="title" placeholder="Title" value="<%= page ? page.title : '' %>">
     <label for="title">Title</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="description" placeholder="Description" value="<%= page.description %>">
+    <input type="text" class="form-control" id="description" placeholder="Description" value="<%= page ? page.description : '' %>">
     <label for="description">Description</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="h1" placeholder="h1" value="<%= page.h1 %>">
+    <input type="text" class="form-control" id="h1" placeholder="h1" value="<%= page ? page.h1 : '' %>">
     <label for="h1">h1</label>
   </div>
   <% if (isPage) { %>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="image url" placeholder="Image url" value="<%= page.slug %>">
+      <input type="text" class="form-control" id="image url" placeholder="Image url" value="<%= page ? page.slug : '' %>">
       <label for="image url">Slug</label>
     </div>
   <% } else { %>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="image url" placeholder="Image url" value="<%= page.img %>">
+      <input type="text" class="form-control" id="image url" placeholder="Image url" value="<%= page ? page.img : '' %>">
       <label for="image url">Image url</label>
     </div>
   <% } %>
-  <textarea id="editor"><%= page.content %></textarea>
+  <textarea id="editor"><%= page ? page.content : '' %></textarea>
   <button type="submit" class="btn btn-success w-100 mt-3">Submit</button>
 </from>
