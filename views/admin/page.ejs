@@ -2,7 +2,11 @@
 <div class="pt-3 pb-2 mb-4 border-bottom">
   <h1 class="h2"><%= title %></h1>
 </div>
-<form method="post" action="/<%= isPage ? 'pages' : 'blog' %>/create">
+<% if (page) { %>
+  <form method="post" action="/<%= isPage ? 'pages' : 'blog' %>/<%= page.id %>/edit?_method=PUT">
+<% } else { %>
+  <form method="post" action="/<%= isPage ? 'pages' : 'blog' %>/create">
+<% } %>
   <div class="form-floating mb-3">
     <input name="title" type="text" class="form-control" id="title" placeholder="Title" value="<%= page ? page.title : '' %>">
     <label for="title">Title</label>

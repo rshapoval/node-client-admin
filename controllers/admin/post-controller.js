@@ -49,6 +49,15 @@ const getEditPost = (req, res) => {
     .catch(error => handleError(res, error));
 };
 
+const editPost = (req, res) => {
+  const { title, description, h1, img, content } = req.body;
+  const { id } = req.params;
+  Post
+    .findByIdAndUpdate(id, { title, description, h1, img, content })
+    .then(result => res.redirect(`/dashboard/blog/${id}/edit`))
+    .catch((error) => handleError(res, error))
+};
+
 const deletePost = (req, res) => {
   Post
     .findByIdAndDelete(req.params.id)
@@ -66,5 +75,6 @@ module.exports = {
   getAddPost,
   addPost,
   getEditPost,
+  editPost,
   deletePost
 };

@@ -49,6 +49,15 @@ const getEditPage = (req, res) => {
     .catch(error => handleError(res, error));
 };
 
+const editPage = (req, res) => {
+  const { title, description, h1, slug, content } = req.body;
+  const { id } = req.params;
+  Page
+    .findByIdAndUpdate(id, { title, description, h1, slug, content })
+    .then(result => res.redirect(`/dashboard/pages/${id}/edit`))
+    .catch((error) => handleError(res, error))
+};
+
 const deletePage = (req, res) => {
   Page
     .findByIdAndDelete(req.params.id)
@@ -68,5 +77,6 @@ module.exports = {
   getAddPage,
   addPage,
   getEditPage,
+  editPage,
   deletePage
 };
