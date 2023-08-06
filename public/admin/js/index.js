@@ -46,13 +46,13 @@
         <div class="row">
           <div class="col">
             <div class="form-floating">
-              <input type="text" class="form-control" id="link-text-${id}" placeholder="link-text">
+              <input name="link-text-${id}" type="text" class="form-control" id="link-text-${id}" placeholder="link-text">
               <label for="link-text-${id}">Link text</label>
             </div>
           </div>
           <div class="col">
             <div class="form-floating">
-              <input type="text" class="form-control" id="link-url-${id}" placeholder="link-url">
+              <input name="link-url-${id}" type="text" class="form-control" id="link-url-${id}" placeholder="link-url">
               <label for="link-url-${id}">Link url</label>
             </div>
           </div>
