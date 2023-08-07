@@ -1,33 +1,21 @@
 <% layout('client/layouts/main') -%>
 <div class="fs-5 w-75 mx-auto mb-5">
-  <h1 class="display-5 mt-3 mb-5 fw-medium text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h1>
+  <h1 class="display-5 mt-3 mb-5 fw-medium text-center"><%= post.h1 %></h1>
   <img class="mb-3 img-fluid rounded-3 mx-auto d-block" src="https://picsum.photos/1200/500" alt="" loading="lazy">
   <div class="mb-4 fw-light">
-    Publish date: <time datetime="12.05.23">12.05.23</time>
+    Publish date: <time datetime="<%= post.createdAt.toLocaleDateString() || 'No date' %>"><%= post.createdAt.toLocaleDateString() || 'No date' %></time>
   </div>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit!</p>
-  <h2>Lorem ipsum dolor</h2>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit!</p>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit!</p>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit!</p>
+  <%- post.content %>
 </div>
-<div class="row text-center">
-  <div class="col-lg-4">
-    <a class="d-block mb-5 rounded-3" href="/blog/post">
-      <img class="mb-3 img-fluid rounded-3" src="https://picsum.photos/536/354" alt="" loading="lazy">
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-    </a>
+<% if (typeof latestPosts !== 'undefined' && latestPosts.length) { %>
+  <div class="row text-center">
+    <% latestPosts.forEach(({ id, h1, img }) => { %>
+      <div class="col-lg-4">
+        <a class="d-block mb-5 rounded-3" href="/blog/<%= id %>">
+          <img class="mb-3 img-fluid rounded-3" src="<%= img %>" alt="" loading="lazy">
+          <p><%= h1 %></p>
+        </a>
+      </div>
+    <% }) %>
   </div>
-  <div class="col-lg-4">
-    <a class="d-block mb-5 rounded-3" href="/blog/post">
-      <img class="mb-3 img-fluid rounded-3" src="https://picsum.photos/536/354" alt="" loading="lazy">
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-    </a>
-  </div>
-  <div class="col-lg-4">
-    <a class="d-block mb-5 rounded-3" href="/blog/post">
-      <img class="mb-3 img-fluid rounded-3" src="https://picsum.photos/536/354" alt="" loading="lazy">
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-    </a>
-  </div>
-</div>
+<% } %>

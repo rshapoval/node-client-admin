@@ -35,11 +35,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
-app.get('/blog/:id', (req, res) => {
-  res
-    .render(createPath('client', 'blog-post'));
-});
-
 app.use(homeRoutes);
 app.use(postClientRoutes);
 app.use(commonAdminRoutes);
