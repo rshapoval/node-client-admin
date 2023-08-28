@@ -2,15 +2,28 @@ const Post = require('../../models/post');
 const createPath = require('../../helpers/create-path');
 const handleError = require('../../helpers/handle-error');
 
+const POSTS_PER_PAGE = 9;
+
 const getPosts = (req, res) => {
+  const page = req.query.page || 1;
+  const skip = (page - 1) * POSTS_PER_PAGE;
+
   Post
     .find()
     .sort({ createdAt: -1})
+    .skip(skip)
+    .limit(POSTS_PER_PAGE)
     .then(posts => {
-      res.render(createPath('client', 'blog'), {
-        title: 'Blog',
-        posts
-      })
+      Post.countDocuments()
+        .then(totalPosts => {
+          res.render(createPath('client', 'blog'), {
+            title: 'Blog',
+            posts,
+            currentPage: page,
+            totalPages: Math.ceil(totalPosts / POSTS_PER_PAGE)
+          });
+        })
+        .catch(error => handleError(res, error));
     })
     .catch(error => handleError(res, error));
 };
