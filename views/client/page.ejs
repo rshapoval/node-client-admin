@@ -1,8 +1,5 @@
 <% layout('client/layouts/main') -%>
-<h1 class="display-1 mb-5 fw-medium text-center">Title</h1>
-<div class="fs-5">
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit!</p>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit!</p>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit!</p>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque suscipit, eius modi aliquam odio et, quis quos eum vel asperiores maiores? Provident ratione facilis corporis nesciunt, a est minima. Sit!</p>
-</div>
+<h1 class="display-1 mb-5 fw-medium text-center">
+  <%= page.title %>
+</h1>
+<div class="fs-5"><%- page.content %></div>

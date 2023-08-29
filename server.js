@@ -7,7 +7,7 @@ const engine = require('ejs-mate')
 require('dotenv').config();
 const createPath = require('./helpers/create-path');
 const sharedDataMiddleware = require('./middlewares/shared-data-middleware');
-const homeRoutes = require('./routes/client/home-routes');
+const pageClientRoutes = require('./routes/client/page-routes');
 const postClientRoutes = require('./routes/client/post-routes');
 const commonAdminRoutes = require('./routes/admin/common-routes');
 const postAdminRoutes = require('./routes/admin/post-routes');
@@ -35,11 +35,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
-app.use(homeRoutes);
-app.use(postClientRoutes);
 app.use(commonAdminRoutes);
-app.use(postAdminRoutes);
 app.use(pageAdminRoutes);
+app.use(postAdminRoutes);
+app.use(postClientRoutes);
+app.use(pageClientRoutes);
 app.use((req, res) => {
   res
     .status(404)

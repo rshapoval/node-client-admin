@@ -17,7 +17,7 @@
         <div>
           <span class="fw-bolder">Slug:</span>
           <% if (pageType === 'pages') { %>
-            <a href="<%= slug ? slug : '/' %>"><%= slug ? slug : '/' %></a>
+            <a href="<%= slug ? `/${slug}` : '/' %>"><%= slug ? `/${slug}` : '/' %></a>
           <% } else { %>
             <a href="<%= typeSlug ? `/${typeSlug}` : '' %>/<%= id %>"><%= typeSlug ? `/${typeSlug}` : '' %>/<%= id %></a>
           <% } %>
