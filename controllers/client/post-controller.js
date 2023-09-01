@@ -16,8 +16,12 @@ const getPosts = (req, res) => {
     .then(posts => {
       Post.countDocuments()
         .then(totalPosts => {
+          const title = 'Blog' || '';
+          const description = '';
           res.render(createPath('client', 'blog'), {
-            title: 'Blog',
+            title,
+            description,
+            h1: 'Blog',
             posts,
             currentPage: page,
             totalPages: Math.ceil(totalPosts / POSTS_PER_PAGE)
@@ -32,8 +36,12 @@ const getPost = async (req, res) => {
   try {
     const latestPosts = await Post.find().sort({ createdAt: -1 }).limit(3) || [];
     const post = await Post.findById(req.params.id);
+    const title = post.title || '';
+    const description = post.description || '';
     res
       .render(createPath('client', 'blog-post'), {
+        title,
+        description,
         post,
         latestPosts
       });

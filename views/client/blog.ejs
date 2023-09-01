@@ -1,5 +1,5 @@
 <% layout('client/layouts/main') -%>
-<h1 class="display-1 mb-5 fw-medium text-center"><%= title %></h1>
+<h1 class="display-1 mb-5 fw-medium text-center"><%= h1 %></h1>
 <div class="row text-center">
   <% if (typeof posts !== 'undefined' && posts.length) { %>
     <% posts.forEach(({ id, h1, img }) => { %>

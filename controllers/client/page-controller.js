@@ -7,8 +7,10 @@ const getHome = (req, res) => {
     .findOne({ slug: '' })
     .then(page => {
       if (!page) return handleError(res, 'Page not found');
+      const title = page.title || '';
+      const description = page.description || '';
       res
-        .render(createPath('client', 'page'), { page });
+        .render(createPath('client', 'page'), { title, description, page });
     })
     .catch(error => handleError(res, error));
 };
@@ -18,8 +20,10 @@ const getPage = (req, res) => {
     .findOne({ slug: req.params.slug })
     .then(page => {
       if (!page) return handleError(res, 'Page not found');
+      const title = page.title || '';
+      const description = page.description || '';
       res
-        .render(createPath('client', 'page'), { page });
+        .render(createPath('client', 'page'), { title, description, page });
     })
     .catch(error => handleError(res, error));
 };
