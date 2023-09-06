@@ -7,11 +7,12 @@ const engine = require('ejs-mate')
 require('dotenv').config();
 const createPath = require('./helpers/create-path');
 const sharedDataMiddleware = require('./middlewares/shared-data-middleware');
-const pageClientRoutes = require('./routes/client/page-routes');
-const postClientRoutes = require('./routes/client/post-routes');
+const loginAdminRoutes = require('./routes/admin/login-routes');
 const commonAdminRoutes = require('./routes/admin/common-routes');
 const postAdminRoutes = require('./routes/admin/post-routes');
 const pageAdminRoutes = require('./routes/admin/page-routes');
+const pageClientRoutes = require('./routes/client/page-routes');
+const postClientRoutes = require('./routes/client/post-routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,6 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
+app.use(loginAdminRoutes);
 app.use(commonAdminRoutes);
 app.use(pageAdminRoutes);
 app.use(postAdminRoutes);
