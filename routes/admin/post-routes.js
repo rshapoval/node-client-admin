@@ -1,4 +1,6 @@
 const express = require('express');
+const isAuthenticated = require('../../helpers/is-authenticated');
+
 const {
   getPosts,
   getAddPost,
@@ -10,10 +12,10 @@ const {
 
 const router = express.Router();
 
-router.get('/dashboard/blog', getPosts);
-router.get('/dashboard/blog/create', getAddPost);
+router.get('/dashboard/blog', isAuthenticated, getPosts);
+router.get('/dashboard/blog/create', isAuthenticated, getAddPost);
 router.post('/blog/create', addPost);
-router.get('/dashboard/blog/:id/edit', getEditPost);
+router.get('/dashboard/blog/:id/edit', isAuthenticated, getEditPost);
 router.put('/blog/:id/edit', editPost);
 router.delete('/blog/:id', deletePost);
 

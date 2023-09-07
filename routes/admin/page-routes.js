@@ -1,4 +1,6 @@
 const express = require('express');
+const isAuthenticated = require('../../helpers/is-authenticated');
+
 const {
   getPages,
   getAddPage,
@@ -10,10 +12,10 @@ const {
 
 const router = express.Router();
 
-router.get('/dashboard/pages', getPages);
-router.get('/dashboard/pages/create', getAddPage);
+router.get('/dashboard/pages', isAuthenticated, getPages);
+router.get('/dashboard/pages/create', isAuthenticated, getAddPage);
 router.post('/pages/create', addPage);
-router.get('/dashboard/pages/:id/edit', getEditPage);
+router.get('/dashboard/pages/:id/edit', isAuthenticated, getEditPage);
 router.put('/pages/:id/edit', editPage);
 router.delete('/pages/:id', deletePage);
 

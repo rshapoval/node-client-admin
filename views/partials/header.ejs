@@ -6,15 +6,30 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <% if (typeof sharedData.nav !== 'undefined' && sharedData.nav.length) { %>
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <% if (typeof sharedData.nav !== 'undefined' && sharedData.nav.length) { %>
             <% sharedData.nav.forEach(({ text, url }, index) => { %>
               <li class="nav-item">
                 <a class="nav-link" href="<%= url %>"><%= text %></a>
               </li>
             <% }) %>
-          </ul>
-        <% } %>
+            <li class="nav-item">
+              <span class="nav-link">|</span>
+            </li>
+            <% if (typeof sharedData.user !== 'undefined' && sharedData.user) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            <% } else { %>    
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+            <% }%>    
+          <% } %>
+        </ul>
       </div>
     </div>
   </nav>
